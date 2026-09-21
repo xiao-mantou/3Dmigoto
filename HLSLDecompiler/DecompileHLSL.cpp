@@ -6099,6 +6099,20 @@ public:
 					}
 					case OPCODE_SAMPLE_L:
 					{
+						if (shader->dx9Shader)
+						{
+							remapTarget(op1);
+							applySwizzle(".xyzw", op2);
+							string lod = GetSuffix(op2, 3);
+							int textureId = atoi(&op3[1]);
+							truncateTexturePos(op2, mTextureType[textureId].c_str());
+							sprintf(buffer, "  %s = %s.SampleLevel(%s, %s);\n", writeTarget(op1),
+								mTextureNames[textureId].c_str(), ci(op2).c_str(), ci(lod).c_str());
+							appendOutput(buffer);
+							removeBoolean(op1);
+							break;
+						}
+
 						remapTarget(op1);
 						applySwizzle(".xyzw", op2);
 						applySwizzle(op1, op3);
