@@ -1840,7 +1840,10 @@ public:
 			// If we have been called without a second parameter
 			// for any reason, bail out now before we corrupt the
 			// heap later
-			logDecompileError("applySwizzle called with no second parameter: " + string(left));
+			logDecompileError("applySwizzle called with no second parameter: " + string(left) +
+				"; statement=" + string(statement) +
+				"; op1=" + string(op1) + "; op2=" + string(op2) +
+				"; op3=" + string(op3) + "; op4=" + string(op4));
 			return;
 		}
 
