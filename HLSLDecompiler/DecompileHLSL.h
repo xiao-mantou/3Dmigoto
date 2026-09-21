@@ -9,7 +9,8 @@
 // Let's use these constants instead of hard coded numbers, so that we can use safe versions
 // of sprintf_s, sscanf_s, strcpy_s
 
-const int opcodeSize = 128;
+// dgVoodoo2-generated DX9 shaders can contain very long immediate operands.
+const int opcodeSize = 1024;
 const int stringSize = 256;
 
 struct DecompilerSettings
