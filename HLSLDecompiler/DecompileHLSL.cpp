@@ -2280,8 +2280,8 @@ public:
 	int ReadStatement(const char *pos)
 	{
 		// Kill newline.
-		char lineBuffer[256];
-		strncpy(lineBuffer, pos, 255); lineBuffer[255] = 0;
+		char lineBuffer[4096];
+		strncpy(lineBuffer, pos, sizeof(lineBuffer) - 1); lineBuffer[sizeof(lineBuffer) - 1] = 0;
 		char *newlinePos = strchr(lineBuffer, '\n'); if (newlinePos) *newlinePos = 0;
 		op1[0] = 0; op2[0] = 0; op3[0] = 0; op4[0] = 0; op5[0] = 0; op6[0] = 0; op7[0] = 0; op8[0] = 0;
 		op9[0] = 0; op10[0] = 0; op11[0] = 0; op12[0] = 0; op13[0] = 0; op14[0] = 0; op15[0] = 0;
